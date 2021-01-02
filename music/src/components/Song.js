@@ -31,36 +31,22 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
         </div>
       )
     } else {
-      for (let i = 0; i < songs.length; i += 2) {
-        let songl = songs[i];
-        let songr = songs[i + 1];
+      for (let i = 5; i < songs.length; i++) {
+        let song = songs[i];
 
-        if (typeof (songl) !== "undefined" && typeof (songr) !== "undefined") {
+        if (typeof (song) !== "undefined") {
           result.push(
-            <div key={songl.id} className="row">
-              <div className="song" onClick={() => handleClick(songl)}>
-                <img src={songl.album.images[2].url} alt={songl.album.images[0].url} />
-                <div className="song-info">
-                  <h1>{cropParagraph(songl.name, 30)}</h1>
-                  <p>{cropParagraph(songl.artists[0].name, 30)}</p>
-                </div>
-                <div className="song-control">
-                  <p>{convertToMin(songl.duration_ms)}</p>
-                  <BsPlus className="plus" onClick={(event) => handleAdd(event, songl)} />
-                </div>
-              </div >
-              <div className="song" onClick={() => handleClick(songr)}>
-                <img src={songr.album.images[2].url} alt={songr.album.images[0].url} />
-                <div className="song-info">
-                  <h1>{cropParagraph(songr.name, 30)}</h1>
-                  <p>{cropParagraph(songr.artists[0].name, 30)}</p>
-                </div>
-                <div className="song-control">
-                  <p>{convertToMin(songr.duration_ms)}</p>
-                  <BsPlus className="plus" onClick={(event) => handleAdd(event, songr)} />
-                </div>
-              </div >
-            </div>
+            <div key={song.id} className="song" onClick={() => handleClick(song)}>
+              <img src={song.album.images[2].url} alt={song.album.images[2].url} />
+              <div className="song-info">
+                <h1>{cropParagraph(song.name, 30)}</h1>
+                <p>{cropParagraph(song.artists[0].name, 30)}</p>
+              </div>
+              <div className="song-control">
+                <p>{convertToMin(song.duration_ms)}</p>
+                <BsPlus className="song-control-plus" onClick={(event) => handleAdd(event, song)} />
+              </div>
+            </div >
           )
         }
       }
@@ -71,8 +57,7 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
 
   return (
     <div>
-      <h2>Top Tracks</h2>
-      <div className="song-list">
+      <div className="songs">
         {displaySong(songs)}
       </div>
     </div>

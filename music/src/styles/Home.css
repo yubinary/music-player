@@ -22,19 +22,17 @@ button:focus {
   font-family: "Nunito Sans", sans-serif;
 }
 
-.main-content{
+.home{
   background: linear-gradient(0deg, #171e31 70%, #2f3d64);
-  padding: 30px;
+  padding: 20px;
   width: 100%;
   min-height: 1050px;
-  border-top-right-radius: 50px;
 }
 
 /* header */
-.main-content .header{
+.home .header{
   display: flex;
   flex-direction: row;
-  margin: 20px;
 }
 
 .header .github{
@@ -103,8 +101,8 @@ h2{
 
 .album img, .song img{
   object-fit: cover;
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   border-radius: 10px;
   margin-bottom: 5px;
 }
@@ -130,19 +128,19 @@ h2{
 }
 
 .album-play-button{
-  font-size: 35px;
+  font-size: 40px;
   padding: 5px;
   position: relative;
-  left: -40px;
-  top: 80px;
+  left: -50px;
+  top: 105px;
 }
 
 .album-layer{
   opacity: 0;
   position: absolute;
   background-color: rgba(61, 61, 61, 0.39);
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   bottom: 11px;
   left: 0px;
   border-radius: 10px;
@@ -178,7 +176,7 @@ h2{
 
 .song-info{
   margin-top: 10px;
-  width: 300px;
+  width: 100%;
 }
 
 .song-info h1{
@@ -195,25 +193,29 @@ h2{
   flex-direction: row;
 }
 
-.song-control .plus{
+.song-control-plus{
   font-size: 35px;
   margin: auto 0px;
   margin-left: 20px;
   padding: 5px;
 }
 
-/* side bar */
-.side-bar{
-  width: 400px;
-  padding: 50px 35px;
-}
-
 /* player */
 .player{
+  width: 400px;
+  padding: 20px;
+}
+
+.player-song{
   text-align: center;
 }
 
-.player h1{
+.player-song-info{
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.player-song-info h1{
   margin: 0px auto;
   font-size: 20px;
   overflow:hidden; 
@@ -221,16 +223,16 @@ h2{
   width: 190px; 
 }
 
-.player p{
+.player-song-info p{
   margin-top: 3px;
   margin-bottom: 0px;
   font-size: 15px;
 }
 
-.player img{
+.player-song img{
   object-fit: cover;
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   border-radius: 100px;
   box-shadow: 0px 0px 20px 1px rgba(218, 218, 218);
 }
@@ -250,13 +252,8 @@ h2{
   font-size: 25px;
 }
 
-.player-info{
-  color: black;
-  margin: 20px 0px;
-}
-
 /* playlist */
-.next-song{
+.playlist-song{
   display: flex;
   flex-direction: row;
   background-color: #1d212c;
@@ -265,28 +262,28 @@ h2{
   border-radius: 10px;
 }
 
-.next-song .info{
+.playlist-song-info{
   margin: auto 20px;
   margin-right: auto;
   padding: 13px 0px;
 }
 
-.next-song p{
+.playlist-song-info p{
   font-size: 13px;
   margin: auto 0px;
 }
 
-.info h1{
+.playlist-song-info h1{
   font-size: 13px;
   margin: 0px;
 }
 
-.info p{
+.inplaylist-song-infofo p{
   font-size: 9px;
   margin: 0px;
 }
 
-.minus{
+.playlist-song-minus{
   font-size: 25px;
   padding: 5px;
   margin: auto 0px;

@@ -13,42 +13,36 @@ export default function Album({ albums, cropParagraph, handleClick }) {
         </div>
       )
     } else {
-      let names = [];
-      for (let i = 0; i < albums.length; i++) {
+      for (let i = 0; i < 5; i++) {
         let album = albums[i];
-        if (names.includes(album.collectionCensoredName)) {
-          continue;
-        } else {
-          names.push(album.collectionCensoredName);
-          result.push(
-            <div key={album.collectionId} className="album" >
-              <div className="album-thumbnail">
-                <img src={album.artworkUrl100} alt={album.artworkUrl100} />
-                <div className="album-layer">
-                  <FaPlayCircle
-                    className="album-play-button"
-                    onClick={() => handleClick(album)}
-                  />
-                </div>
+        result.push(
+          <div key={album.album.name} className="album" >
+            <div className="album-thumbnail">
+              <img src={album.album.images[1].url} alt={album.album.images[1].url} />
+              <div className="album-layer">
+                <FaPlayCircle
+                  className="album-play-button"
+                  onClick={() => handleClick(album)}
+                />
               </div>
-              <div className="album-info">
-                <h1>{cropParagraph(album.collectionCensoredName, 15)}</h1>
-                <p>{cropParagraph(album.artistName, 20)}</p>
-              </div>
-            </div >
-          )
-        }
-        if (result.length === 6) return result;
+            </div>
+            <div className="album-info">
+              <h1>{cropParagraph(album.name, 15)}</h1>
+              <p>{cropParagraph(album.artists[0].name, 20)}</p>
+            </div>
+          </div >
+        )
       }
     }
     return result;
   }
 
+  console.log(albums)
   return (
     <div>
-      <h2>Albums</h2>
+      <h2>Top Tracks</h2>
       <div className="album-list">
-        {/* {displayAlbum(albums)} */}
+        {displayAlbum(albums)}
       </div>
     </div>
   )

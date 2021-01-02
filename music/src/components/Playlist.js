@@ -17,13 +17,13 @@ export default function Playlist({ playlist, setPlaylist, cropParagraph }) {
     for (let i = 1; i < playlists.length; i++) {
       let playlist = playlists[i];
       result.push(
-        <div className="next-song">
+        <div className="playlist-song">
           <p>{i}</p>
-          <div className="info">
+          <div className="playlist-song-info">
             <h1>{cropParagraph(playlist.name, 20)}</h1>
             <p>{cropParagraph(playlist.artists[0].name, 40)}</p>
           </div>
-          <BiMinus className="minus" onClick={() => handleRemove(i)} />
+          <BiMinus className="playlist-song-minus" onClick={() => handleRemove(i)} />
         </div>
       )
     } return result;

@@ -41,15 +41,15 @@ export default function Player({ song, playlist, setPlaylist, cropParagraph }) {
   // handle case when song is an empty object
   if (Object.keys(song).length === 0) {
     return (
-      <div className="side-bar">
+      <div className="player">
       </div>
     )
   } else {
     return (
-      <div className="side-bar">
-        <div className="player">
+      <div className="player">
+        <div className="player-song">
           <img src={song.album.images[1].url} alt={song.album.images[1].url} />
-          <div className="player-info">
+          <div className="player-song-info">
             <h1>{song.name}</h1>
             <p>{song.artists[0].name}</p>
           </div>

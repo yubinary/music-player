@@ -9,24 +9,37 @@ import { FiGithub } from 'react-icons/fi';
 import "../styles/Home.css";
 
 export default function MainContent() {
+  const [artistId, setArtistId] = useState("");
   const [songs, setSongs] = useState([]);
-  const [albums, setAlbums] = useState([]);
   const [songToPlay, setSongToPlay] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   // first object is the song playing
   const [playlist, setPlaylist] = useState([{}]);
 
-  // make get song request to Apple Music API
-  function fetchEntity(entity, limit, setFunction) {
-    // entity list: musicArtist, album, song
-    let searchParam = "search?term=" + encodeURIComponent(searchTerm);
-    let limitParam = "&limit=" + limit;
-    let entityParam = "&entity=" + entity;
-    let url = "https://itunes.apple.com/" + searchParam + limitParam + entityParam;
+  // make get song request to Spotify API
+  function fetchSong(setFunction, artistId) {
+    let idParam = encodeURIComponent(artistId);
+    let url = "https://spotify-api-wrapper.appspot.com/artist/" + idParam + "/top-tracks";
 
-    axios.get("https://spotify-api-wrapper.appspot.com/artist/3HqSLMAZ3g3d5poNaI7GOU/top-tracks")
+    axios.get(url)
       .then(result => {
+        console.log(url);
         setFunction(result.data.tracks);
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  }
+
+  function fetchArtist() {
+    let searchParam = encodeURIComponent(searchTerm);
+    let url = "https://spotify-api-wrapper.appspot.com/artist/" + searchParam;
+
+    axios.get(url)
+      .then(result => {
+        let id = result.data.artists.items[0].id;
+        setArtistId(id);
+        fetchSong(setSongs, id);
       })
       .catch(error => {
         console.error(error);
@@ -42,8 +55,11 @@ export default function MainContent() {
   function handleSubmit(event) {
     // prevent default action of form (ex. refresh the page)
     event.preventDefault();
-    fetchEntity("song", 10, setSongs);
-    fetchEntity("album", 6, setAlbums);
+    fetchArtist();
+
+
+    // fetchSong(setSongs);
+    // fetchSong(setAlbums);
   }
 
   // helper function that crops paragraph by given length
@@ -58,7 +74,7 @@ export default function MainContent() {
 
   return (
     <div className="body">
-      <div className="main-content">
+      <div className="home">
         <div className="header">
           <FiGithub className="github" />
           <form className="input"
@@ -76,7 +92,7 @@ export default function MainContent() {
         </div>
         <div className="results">
           <Album
-            albums={albums}
+            albums={songs}
             cropParagraph={cropParagraph}
             handleClick={handleClick}
           />
