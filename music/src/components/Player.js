@@ -4,7 +4,7 @@ import disk from "./disk.png";
 
 import { BsFillPauseFill, BsFillPlayFill, BsFillSkipStartFill, BsFillSkipEndFill } from 'react-icons/bs';
 
-export default function Player({ song, playlist, setPlaylist, cropParagraph }) {
+export default function Player({ song, playlist, setPlaylist, cropParagraph, joinArray }) {
   const [isPlay, setIsPlay] = useState(false);
   const [audio, setAudio] = useState(new Audio());
 
@@ -55,7 +55,7 @@ export default function Player({ song, playlist, setPlaylist, cropParagraph }) {
           </div>
           <div className="player-song-info">
             <h1>{song.name}</h1>
-            <p>{song.artists[0].name}</p>
+            <p>{joinArray(song.artists)}</p>
           </div>
           <div>
             <button className="skip">

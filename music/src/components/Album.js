@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaPlayCircle } from 'react-icons/fa';
 
-export default function Album({ albums, cropParagraph, handleClick }) {
+export default function Album({ albums, cropParagraph, handleClick, joinArray }) {
 
   // display albums
   function displayAlbum(albums) {
@@ -28,7 +28,7 @@ export default function Album({ albums, cropParagraph, handleClick }) {
             </div>
             <div className="album-info">
               <h1>{cropParagraph(album.name, 23)}</h1>
-              <p>{cropParagraph(album.artists[0].name, 20)}</p>
+              <p>{cropParagraph(joinArray(album.artists), 26)}</p>
             </div>
           </div >
         )

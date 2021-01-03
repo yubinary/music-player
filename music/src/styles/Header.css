@@ -74,9 +74,6 @@ textarea:focus, input:focus{
 /* artist */
 .artist{
   display: flex;
-}
-
-.artist{
   margin-top: 90px;
 }
 

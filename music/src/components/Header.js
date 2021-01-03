@@ -1,6 +1,6 @@
 import React from 'react';
 import { BiSearch } from 'react-icons/bi';
-import { FaHeart } from 'react-icons/fa';
+import { FiMusic } from 'react-icons/fi';
 
 export default function Header({ artist, searchTerm, setSearchTerm, fetchArtist }) {
 
@@ -11,6 +11,25 @@ export default function Header({ artist, searchTerm, setSearchTerm, fetchArtist 
     fetchArtist();
   }
 
+  // helper function for number of followers
+  function shortenNum(num) {
+    console.log(num)
+    let str = num + "";
+    if (str.length >= 7) {
+      let integer = Math.floor(num / 1000000) + ".";
+      let decimal = (num % 1000000) + "";
+      return integer + decimal.substring(0, 1) + "M"
+    } else if (str.length >= 6) {
+      let integer = Math.floor(num / 1000);
+      return integer + "K"
+    } else if (str.length >= 4) {
+      let integer = Math.floor(num / 1000) + ".";
+      let decimal = (num % 1000) + "";
+      return integer + decimal.substring(0, 1) + "K"
+    } else {
+      return str;
+    }
+  }
   // handle case when song is an empty object
   if (Object.keys(artist).length === 0) {
     return (
@@ -65,7 +84,7 @@ export default function Header({ artist, searchTerm, setSearchTerm, fetchArtist 
             <div className="artist-info">
               <h2>{artist.name}</h2>
               <div className="artist-detail">
-                <p><FaHeart />{artist.followers.total}</p>
+                <p><FiMusic />{shortenNum(artist.followers.total)} followers</p>
                 <p>{artist.genres}</p>
               </div>
             </div>

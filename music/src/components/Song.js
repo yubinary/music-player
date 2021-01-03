@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsPlus } from 'react-icons/bs';
 
-export default function Song({ songs, cropParagraph, handleClick, playlist, setPlaylist }) {
+export default function Song({ songs, cropParagraph, handleClick, playlist, setPlaylist, joinArray }) {
 
   // helper function that converts milliseconds to minutes
   function convertToMin(ms) {
@@ -50,7 +50,7 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
               </td>
               <td className="song-info">
                 <h1>{cropParagraph(song.name, 40)}</h1>
-                <p>{cropParagraph(song.artists[0].name, 30)}</p>
+                <p>{cropParagraph(joinArray(song.artists), 30)}</p>
               </td>
               <td className="song-album">{cropParagraph(song.album.name, 35)}</td>
               <td className="song-time">{convertToMin(song.duration_ms)}</td>
@@ -64,6 +64,7 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
     }
     return result;
   }
+
 
   return (
     <div>

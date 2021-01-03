@@ -34,5 +34,6 @@ button:focus {
 
 .results{
   padding: 20px;
+  position: relative;
 }
 

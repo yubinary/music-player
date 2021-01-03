@@ -66,6 +66,15 @@ export default function Home() {
     } return crop;
   }
 
+  // helper function for array of artists
+  function joinArray(arr) {
+    let names = [];
+    for (let a of arr) {
+      if (!names.includes(a.name)) names.push(a.name);
+    }
+    return names.join(", ");
+  }
+
   return (
     <div className="body">
       <div className="home">
@@ -80,6 +89,7 @@ export default function Home() {
             albums={songs}
             cropParagraph={cropParagraph}
             handleClick={handleClick}
+            joinArray={joinArray}
           />
           <Song
             songs={songs}
@@ -87,6 +97,7 @@ export default function Home() {
             handleClick={handleClick}
             playlist={playlist}
             setPlaylist={setPlaylist}
+            joinArray={joinArray}
           />
         </div>
       </div>
@@ -95,6 +106,7 @@ export default function Home() {
         playlist={playlist}
         setPlaylist={setPlaylist}
         cropParagraph={cropParagraph}
+        joinArray={joinArray}
       />
     </div >
   )
