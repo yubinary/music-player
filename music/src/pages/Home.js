@@ -5,11 +5,14 @@ import Album from "../components/Album.js";
 import Song from "../components/Song.js";
 
 import { BiSearch } from 'react-icons/bi';
-import { FiGithub } from 'react-icons/fi';
 import "../styles/Home.css";
+import "../styles/Header.css";
+import "../styles/AlbumSong.css";
+import "../styles/Player.css";
 
 export default function MainContent() {
   const [artistId, setArtistId] = useState("");
+  const [artist, setArtist] = useState({});
   const [songs, setSongs] = useState([]);
   const [songToPlay, setSongToPlay] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,7 +33,6 @@ export default function MainContent() {
       })
   }
 
-  console.log(songs)
   function fetchArtist() {
     let searchParam = encodeURIComponent(searchTerm);
     let url = "https://spotify-api-wrapper.appspot.com/artist/" + searchParam;
@@ -38,8 +40,10 @@ export default function MainContent() {
     axios.get(url)
       .then(result => {
         let id = result.data.artists.items[0].id;
+        let artist = result.data.artists.items[0];
         setArtistId(id);
         fetchSong(setSongs, id);
+        setArtist(artist)
       })
       .catch(error => {
         console.error(error);
@@ -68,23 +72,39 @@ export default function MainContent() {
     } return crop;
   }
 
+  var headerStyle = {
+    backgroundImage: "url(" + artist.images[0].url + ")",
+  };
+  console.log(artist)
   return (
     <div className="body">
       <div className="home">
-        <div className="header">
-          <FiGithub className="github" />
-          <form className="input"
-            onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={(event) => setSearchTerm(event.target.value)}
-            />
-            <button className="find" type="submit">
-              <BiSearch className="search-icon" />
-            </button>
-          </form>
+        <div className="header" style={headerStyle}>
+          <div className="navigation">
+            <h1>Music</h1>
+            <form className="search-bar"
+              onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+              />
+              <button className="search-bar-button" type="submit">
+                <BiSearch className="search-bar-icon" />
+              </button>
+            </form>
+          </div>
+          <div className="artist">
+            <img className="artist-img" src={artist.images[1].url} alt={artist.images[1].url} />
+            <div className="artist-info">
+              <h2>{artist.name}</h2>
+              <div className="artist-detail">
+                <p>{artist.followers.total}</p>
+                <p>{artist.genres}</p>
+              </div>
+            </div>
+          </div>
         </div>
         <div className="results">
           <Album
@@ -107,6 +127,6 @@ export default function MainContent() {
         setPlaylist={setPlaylist}
         cropParagraph={cropParagraph}
       />
-    </div>
+    </div >
   )
 } 

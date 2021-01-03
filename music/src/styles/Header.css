@@ -1,0 +1,86 @@
+.header{
+  clip-path: inset( -100vw 0);
+  /* filter: blur(20px); */
+  padding: 30px 40px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* navigation */
+.header .navigation{
+  display: flex;
+  flex-direction: row;
+}
+
+.navigation h1{
+  font-size: 25px;
+  margin: auto 0px;
+}
+
+.navigation form{
+  margin-left: auto;
+}
+
+/* search bar */
+.search-bar{
+  border: 1px solid white;
+  border-radius: 10px;
+  width: 290px;
+  display: flex;
+  flex-direction: row;
+}
+
+.search-bar input{
+  font-size: 15px;
+  width: 260px;
+  padding: 8px 15px;
+  border: 0px;
+  background-color: transparent;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+}
+
+.search-bar-button{
+  color: white;
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.search-bar-icon{
+  vertical-align: middle;
+}
+
+/* artist */
+.artist, .artist-detail{
+  display: flex;
+  flex-direction: row;
+}
+
+.artist{
+  margin-top: 90px;
+}
+
+.artist-img{
+  width: 300px;
+  height: 300px;
+  border-radius: 200px;
+  object-fit: cover;
+}
+
+.artist-info{
+  margin: auto 0px 0px 10px;
+}
+
+.artist-info h2{
+  font-size: 40px;
+  margin: 0px;
+}
+
+.artist-detail p{
+  margin: 0px;
+}

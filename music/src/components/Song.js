@@ -65,7 +65,6 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
     return result;
   }
 
-
   return (
     <div>
       <div className="songs">

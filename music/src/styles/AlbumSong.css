@@ -1,0 +1,144 @@
+/* album */
+.album-list{
+  display: flex;
+}
+
+.album{
+  padding: 20px;
+  text-align: center;
+  margin-right: auto;
+}
+
+.album:last-child{
+  margin-right: 0px;
+}
+
+.song:hover{
+  background-color: #2b3246;
+}
+
+.album img, .song img{
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+}
+
+.album-info{
+  text-align: left;
+}
+
+.album-info h1, .song-info h1{
+  font-size: 13px;
+  margin: 0px;
+}
+
+.album-info p, .song-info p{
+  font-size: 12px;
+  font-weight: 600;
+  color: #969696;
+  margin: 0px;
+}
+
+.album-thumbnail{
+  position: relative;
+}
+
+.album-play-button{
+  font-size: 40px;
+  padding: 5px;
+  position: relative;
+  left: -50px;
+  top: 105px;
+}
+
+.album-layer{
+  opacity: 0;
+  position: absolute;
+  background-color: rgba(61, 61, 61, 0.39);
+  width: 150px;
+  height: 150px;
+  bottom: 6px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.album-layer:hover{
+  opacity: 1;
+}
+
+/* song */
+.songs{
+  padding: 0px 20px;
+}
+
+.songs-table{
+  table-layout: auto;
+  padding: 0px 20px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.songs-table th{
+  color: #3a445f;
+  padding: 10px 0px;
+  text-align:left;
+}
+
+.songs-table td{
+  padding: 15px 0px;
+}
+
+.songs-table td:nth-child(2){
+  text-align: center;
+}
+
+.songs-table tr:first-child{
+  border-bottom: 1px solid #3a445f;
+  margin: 100px;
+}
+
+.songs-table tr th:first-child, 
+.songs-table tr td:first-child, 
+.songs-table tr th:last-child, 
+.songs-table tr td:last-child{
+  text-align: center;
+}
+
+.song{
+  transition: 0.3s ease-in-out;
+  font-size: 14px;
+}
+
+.song-rank{
+  font-size: 15px;
+  font-weight: 600;
+  width: 5%;
+}
+
+.song img{
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  vertical-align: middle;
+}
+
+.song-info{
+  margin-top: 10px;
+  width: 40%;
+}
+
+.song-info h1{
+  font-size: 17px;
+}
+
+.song-album{
+  width: 30%;
+}
+
+.song-control-plus{
+  font-size: 30px;
+  margin: auto 0px;
+  padding: 5px;
+}
