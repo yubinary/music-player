@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Playlist from "./Playlist.js";
+import disk from "./disk.png";
 
 import { BsFillPauseFill, BsFillPlayFill, BsFillSkipStartFill, BsFillSkipEndFill } from 'react-icons/bs';
 
@@ -48,7 +49,10 @@ export default function Player({ song, playlist, setPlaylist, cropParagraph }) {
     return (
       <div className="player">
         <div className="player-song">
-          <img src={song.album.images[1].url} alt={song.album.images[1].url} />
+          <div className="player-img">
+            <img className="player-album" src={song.album.images[1].url} alt={song.album.images[1].url} />
+            <img className="player-disk" src={disk} alt="disk" />
+          </div>
           <div className="player-song-info">
             <h1>{song.name}</h1>
             <p>{song.artists[0].name}</p>

@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+
+import Header from "../components/Header.js";
 import Player from "../components/Player.js";
 import Album from "../components/Album.js";
 import Song from "../components/Song.js";
 
-import { BiSearch } from 'react-icons/bi';
 import "../styles/Home.css";
 import "../styles/Header.css";
 import "../styles/AlbumSong.css";
 import "../styles/Player.css";
 
-export default function MainContent() {
+export default function Home() {
   const [artistId, setArtistId] = useState("");
   const [artist, setArtist] = useState({});
   const [songs, setSongs] = useState([]);
@@ -55,13 +56,6 @@ export default function MainContent() {
     setSongToPlay(song);
   }
 
-  // fetch search term to when button clicked
-  function handleSubmit(event) {
-    // prevent default action of form (ex. refresh the page)
-    event.preventDefault();
-    fetchArtist();
-  }
-
   // helper function that crops paragraph by given length
   function cropParagraph(p, len) {
     let crop = "";
@@ -72,40 +66,15 @@ export default function MainContent() {
     } return crop;
   }
 
-  var headerStyle = {
-    backgroundImage: "url(" + artist.images[0].url + ")",
-  };
-  console.log(artist)
   return (
     <div className="body">
       <div className="home">
-        <div className="header" style={headerStyle}>
-          <div className="navigation">
-            <h1>Music</h1>
-            <form className="search-bar"
-              onSubmit={handleSubmit}>
-              <input
-                type="text"
-                placeholder="Search"
-                value={searchTerm}
-                onChange={(event) => setSearchTerm(event.target.value)}
-              />
-              <button className="search-bar-button" type="submit">
-                <BiSearch className="search-bar-icon" />
-              </button>
-            </form>
-          </div>
-          <div className="artist">
-            <img className="artist-img" src={artist.images[1].url} alt={artist.images[1].url} />
-            <div className="artist-info">
-              <h2>{artist.name}</h2>
-              <div className="artist-detail">
-                <p>{artist.followers.total}</p>
-                <p>{artist.genres}</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Header
+          artist={artist}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          fetchArtist={fetchArtist}
+        />
         <div className="results">
           <Album
             albums={songs}
