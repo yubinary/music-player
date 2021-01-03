@@ -16,14 +16,13 @@ export default function MainContent() {
   // first object is the song playing
   const [playlist, setPlaylist] = useState([{}]);
 
-  // make get song request to Spotify API
+  // make get song request to Spotify API, used callback
   function fetchSong(setFunction, artistId) {
     let idParam = encodeURIComponent(artistId);
     let url = "https://spotify-api-wrapper.appspot.com/artist/" + idParam + "/top-tracks";
 
     axios.get(url)
       .then(result => {
-        console.log(url);
         setFunction(result.data.tracks);
       })
       .catch(error => {
@@ -31,6 +30,7 @@ export default function MainContent() {
       })
   }
 
+  console.log(songs)
   function fetchArtist() {
     let searchParam = encodeURIComponent(searchTerm);
     let url = "https://spotify-api-wrapper.appspot.com/artist/" + searchParam;
@@ -56,10 +56,6 @@ export default function MainContent() {
     // prevent default action of form (ex. refresh the page)
     event.preventDefault();
     fetchArtist();
-
-
-    // fetchSong(setSongs);
-    // fetchSong(setAlbums);
   }
 
   // helper function that crops paragraph by given length

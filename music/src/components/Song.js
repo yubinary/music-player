@@ -15,6 +15,13 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
     }
   }
 
+  // helper function that always makes number to two digits
+  function twoDigits(rank) {
+    if (rank.length === 1) {
+      return "0" + rank;
+    } else return rank;
+  }
+
   // add clicked song to the playlist
   function handleAdd(event, song) {
     event.stopPropagation();
@@ -36,17 +43,21 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
 
         if (typeof (song) !== "undefined") {
           result.push(
-            <div key={song.id} className="song" onClick={() => handleClick(song)}>
-              <img src={song.album.images[2].url} alt={song.album.images[2].url} />
-              <div className="song-info">
-                <h1>{cropParagraph(song.name, 30)}</h1>
+            <tr key={song.id} className="song" onClick={() => handleClick(song)}>
+              <td className="song-rank">{twoDigits(i + 1 + "")}</td>
+              <td>
+                <img src={song.album.images[2].url} alt={song.album.images[2].url} />
+              </td>
+              <td className="song-info">
+                <h1>{cropParagraph(song.name, 40)}</h1>
                 <p>{cropParagraph(song.artists[0].name, 30)}</p>
-              </div>
-              <div className="song-control">
-                <p>{convertToMin(song.duration_ms)}</p>
+              </td>
+              <td className="song-album">{cropParagraph(song.album.name, 35)}</td>
+              <td className="song-time">{convertToMin(song.duration_ms)}</td>
+              <td>
                 <BsPlus className="song-control-plus" onClick={(event) => handleAdd(event, song)} />
-              </div>
-            </div >
+              </td>
+            </tr >
           )
         }
       }
@@ -58,7 +69,17 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
   return (
     <div>
       <div className="songs">
-        {displaySong(songs)}
+        <table className="songs-table">
+          <tr>
+            <th>#</th>
+            <th></th>
+            <th>Track / Artist</th>
+            <th>Album</th>
+            <th>Time</th>
+            <th>Add</th>
+          </tr>
+          {displaySong(songs)}
+        </table>
       </div>
     </div>
   )

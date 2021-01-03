@@ -16,7 +16,7 @@ export default function Album({ albums, cropParagraph, handleClick }) {
       for (let i = 0; i < 5; i++) {
         let album = albums[i];
         result.push(
-          <div key={album.album.name} className="album" >
+          <div key={album.id} className="album" >
             <div className="album-thumbnail">
               <img src={album.album.images[1].url} alt={album.album.images[1].url} />
               <div className="album-layer">
@@ -27,7 +27,7 @@ export default function Album({ albums, cropParagraph, handleClick }) {
               </div>
             </div>
             <div className="album-info">
-              <h1>{cropParagraph(album.name, 15)}</h1>
+              <h1>{cropParagraph(album.name, 23)}</h1>
               <p>{cropParagraph(album.artists[0].name, 20)}</p>
             </div>
           </div >
@@ -37,7 +37,6 @@ export default function Album({ albums, cropParagraph, handleClick }) {
     return result;
   }
 
-  console.log(albums)
   return (
     <div>
       <h2>Top Tracks</h2>

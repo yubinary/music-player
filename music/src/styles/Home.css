@@ -33,6 +33,7 @@ button:focus {
 .home .header{
   display: flex;
   flex-direction: row;
+  padding: 10px;
 }
 
 .header .github{
@@ -95,6 +96,10 @@ h2{
   margin-right: auto;
 }
 
+.album:last-child{
+  margin-right: 0px;
+}
+
 .song:hover{
   background-color: #2b3246;
 }
@@ -152,49 +157,85 @@ h2{
 }
 
 /* song */
-.row{
-  display: flex;
-  flex-direction: row;
+.songs{
+  padding: 0px 20px;
+}
+
+.songs-table{
+  table-layout: auto;
+  padding: 0px 20px;
+  width: 100%;
+  text-align:left;
+  border-collapse: collapse;
+}
+
+.songs-table th{
+  color: rgb(100, 100, 100);
+  padding: 10px 0px;
+}
+
+.songs-table td{
+  padding: 15px 0px;
+}
+
+.songs-table td:nth-child(2){
+  text-align: center;
+}
+
+.songs-table tr:first-child{
+  border-bottom: 1px solid rgb(100, 100, 100);
+  margin: 100px;
+}
+
+.songs-table tr th:first-child, .songs-table tr td:first-child{
+  text-align: center;
+  padding: 0px 2px;
+}
+
+.songs-table tr th:last-child, .songs-table tr td:last-child{
+  text-align: right;
 }
 
 .song{
-  display: flex;
-  flex-direction: row;
-  padding: 20px;
-  margin-right: auto;
-  margin-bottom: 10px;
-  border-radius: 25px;
   transition: 0.3s ease-in-out;
 }
 
+.song-rank{
+  margin: auto 0px;
+  font-size: 15px;
+  font-weight: 600;
+  width: 5%;
+}
+
 .song img{
+  margin: auto;
   width: 60px;
   height: 60px;
-  border-radius: 15px;
-  margin-right: 20px;
+  border-radius: 10px;
+  vertical-align: middle;
 }
 
 .song-info{
+  font-size: 14px;
   margin-top: 10px;
-  width: 100%;
+  width: 40%;
 }
 
 .song-info h1{
   font-size: 17px;
 }
 
-.song-info p{
-  font-size: 14px;
+.song-album{
+  font-size: 15px;
+  width: 30%;
 }
 
-.song-control{
-  margin: auto 0px;
-  display: flex;
-  flex-direction: row;
+.song-time{
+  font-size: 15px;
 }
 
 .song-control-plus{
-  font-size: 35px;
+  font-size: 30px;
   margin: auto 0px;
   margin-left: 20px;
   padding: 5px;
@@ -203,7 +244,7 @@ h2{
 /* player */
 .player{
   width: 400px;
-  padding: 20px;
+  padding: 30px;
 }
 
 .player-song{
