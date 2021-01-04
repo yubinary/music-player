@@ -30,6 +30,19 @@ export default function Header({ artist, searchTerm, setSearchTerm, fetchArtist 
       return str;
     }
   }
+
+  // helper function for music genre tags
+  function displayTags(tags) {
+    let result = [];
+    for (let tag of tags) {
+      result.push(
+        <div key={tag} className="artist-tag">
+          <p>{tag}</p>
+        </div>
+      )
+    } return result;
+  }
+
   // handle case when song is an empty object
   if (Object.keys(artist).length === 0) {
     return (
@@ -84,13 +97,13 @@ export default function Header({ artist, searchTerm, setSearchTerm, fetchArtist 
             <div className="artist-info">
               <h2>{artist.name}</h2>
               <div className="artist-detail">
-                <p><FiMusic />{shortenNum(artist.followers.total)} followers</p>
-                <p>{artist.genres}</p>
+                <p><span className="larger"><FiMusic className="artist-music-icon" />{shortenNum(artist.followers.total)}</span> followers</p>
+                <div className="artist-tags">{displayTags(artist.genres)}</div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </div >
     )
   }
 }

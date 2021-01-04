@@ -96,3 +96,24 @@ textarea:focus, input:focus{
 .artist-detail p{
   margin: 0px;
 }
+
+.artist-detail .larger{
+  font-size: 20px;
+}
+
+.artist-music-icon{
+  vertical-align: middle;  
+  margin: 0px 5px 5px 0px;
+}
+
+.artist-tags{
+  display: flex;
+}
+
+.artist-tag{
+  font-size: 12px;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 2px 14px;
+  margin-right: 5px;
+}
