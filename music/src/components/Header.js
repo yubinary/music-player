@@ -77,7 +77,7 @@ export default function Header({ artist, searchTerm, setSearchTerm, fetchArtist 
         <div className="back" style={headerStyle} />
         <div className="top">
           <div className="navigation">
-            <h1>Music</h1>
+            <h1><a href="/">Music</a></h1>
             <form className="search-bar"
               onSubmit={handleSubmit}>
               <input

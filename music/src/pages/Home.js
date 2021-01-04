@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useLocation } from 'react-router-dom'
 
 import Header from "../components/Header.js";
 import Player from "../components/Player.js";
@@ -12,6 +13,8 @@ import "../styles/AlbumSong.css";
 import "../styles/Player.css";
 
 export default function Home() {
+  const location = useLocation();
+
   const [artistId, setArtistId] = useState("");
   const [artist, setArtist] = useState({});
   const [songs, setSongs] = useState([]);
@@ -19,6 +22,12 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   // first object is the song playing
   const [playlist, setPlaylist] = useState([]);
+
+
+  useEffect(() => {
+    fetchSong(setSongs, location.searchArtistId);
+  }, [location.searchArtistId])
+
 
   // make get song request to Spotify API, used callback
   function fetchSong(setFunction, artistId) {
@@ -34,6 +43,7 @@ export default function Home() {
       })
   }
 
+  // make get artist request to Spotify API
   function fetchArtist() {
     let searchParam = encodeURIComponent(searchTerm);
     let url = "https://spotify-api-wrapper.appspot.com/artist/" + searchParam;
@@ -81,11 +91,12 @@ export default function Home() {
     return names.join(", ");
   }
 
+
   return (
     <div className="body">
       <div className="home">
         <Header
-          artist={artist}
+          artist={artistId === "" ? location.searchArtist : artist}
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           fetchArtist={fetchArtist}
