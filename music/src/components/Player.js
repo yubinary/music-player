@@ -39,6 +39,19 @@ export default function Player({ song, playlist, setPlaylist, cropParagraph, joi
     }
   }
 
+  // helper function for conditional animation
+  function isAnimation(title) {
+    if (title.length > 20) {
+      return (
+        <h1 className="animate-h1">{song.name}</h1>
+      )
+    } else {
+      return (
+        <h1 className="noanimate-h1">{song.name}</h1>
+      )
+    }
+  }
+
   // handle case when song is an empty object
   if (Object.keys(song).length === 0) {
     return (
@@ -54,7 +67,7 @@ export default function Player({ song, playlist, setPlaylist, cropParagraph, joi
             <img className="player-disk" src={disk} alt="disk" />
           </div>
           <div className="player-song-info">
-            <h1>{song.name}</h1>
+            {isAnimation(song.name)}
             <p>{joinArray(song.artists)}</p>
           </div>
           <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsPlus } from 'react-icons/bs';
 
-export default function Song({ songs, cropParagraph, handleClick, playlist, setPlaylist, joinArray }) {
+export default function Song({ songs, cropParagraph, handleClick, handleAdd, playlist, setPlaylist, joinArray }) {
 
   // helper function that converts milliseconds to minutes
   function convertToMin(ms) {
@@ -20,12 +20,6 @@ export default function Song({ songs, cropParagraph, handleClick, playlist, setP
     if (rank.length === 1) {
       return "0" + rank;
     } else return rank;
-  }
-
-  // add clicked song to the playlist
-  function handleAdd(event, song) {
-    event.stopPropagation();
-    setPlaylist([...playlist, song]);
   }
 
   // display songs

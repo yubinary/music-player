@@ -56,6 +56,12 @@ export default function Home() {
     setSongToPlay(song);
   }
 
+  // add clicked song to the playlist
+  function handleAdd(event, song) {
+    event.stopPropagation();
+    setPlaylist([...playlist, song]);
+  }
+
   // helper function that crops paragraph by given length
   function cropParagraph(p, len) {
     let crop = "";
@@ -89,12 +95,14 @@ export default function Home() {
             albums={songs}
             cropParagraph={cropParagraph}
             handleClick={handleClick}
+            handleAdd={handleAdd}
             joinArray={joinArray}
           />
           <Song
             songs={songs}
             cropParagraph={cropParagraph}
             handleClick={handleClick}
+            handleAdd={handleAdd}
             playlist={playlist}
             setPlaylist={setPlaylist}
             joinArray={joinArray}

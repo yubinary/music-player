@@ -1,7 +1,8 @@
 import React from 'react';
 import { FaPlayCircle } from 'react-icons/fa';
+import { BsPlus } from 'react-icons/bs';
 
-export default function Album({ albums, cropParagraph, handleClick, joinArray }) {
+export default function Album({ albums, cropParagraph, handleClick, handleAdd, joinArray }) {
 
   // display albums
   function displayAlbum(albums) {
@@ -23,6 +24,10 @@ export default function Album({ albums, cropParagraph, handleClick, joinArray })
                 <FaPlayCircle
                   className="album-play-button"
                   onClick={() => handleClick(album)}
+                />
+                <BsPlus
+                  className="album-add-button"
+                  onClick={(event) => handleAdd(event, album)}
                 />
               </div>
             </div>
