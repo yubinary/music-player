@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <Route exact path="/" component={Search} />
-      <Route path="/artist" component={Home} />
+      <Route path="/artist/:name" component={Home} />
     </Router>
   );
 }

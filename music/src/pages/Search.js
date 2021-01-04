@@ -16,7 +16,7 @@ export default function Search() {
         let id = result.data.artists.items[0].id;
         let artist = result.data.artists.items[0];
         history.push({
-          pathname: "/artist",
+          pathname: "/artist/" + encodeURIComponent(artist.name).toLowerCase(),
           searchArtistId: id,
           searchArtist: artist
         });

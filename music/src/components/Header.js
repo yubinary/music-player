@@ -43,7 +43,7 @@ export default function Header({ artist, searchTerm, setSearchTerm, fetchArtist 
   }
 
   // handle case when song is an empty object
-  if (Object.keys(artist).length === 0) {
+  if (typeof (artist) === "undefined" || Object.keys(artist).length === 0) {
     return (
       <div className="header" >
         <div className="back" />

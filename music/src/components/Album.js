@@ -7,7 +7,7 @@ export default function Album({ albums, cropParagraph, handleClick, handleAdd, j
   // display albums
   function displayAlbum(albums) {
     let result = [];
-    if (albums.length === 0) {
+    if (typeof (albums) === "undefined" || albums.length === 0) {
       return (
         <div className="album">
           <p>no result</p>

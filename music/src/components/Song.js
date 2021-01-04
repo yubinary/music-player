@@ -25,7 +25,7 @@ export default function Song({ songs, cropParagraph, handleClick, handleAdd, pla
   // display songs
   function displaySong(songs) {
     let result = [];
-    if (songs.length === 0) {
+    if (typeof (songs) === "undefined" || songs.length === 0) {
       return (
         <div className="song">
           <p>no result</p>
