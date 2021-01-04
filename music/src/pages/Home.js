@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom'
 import { useParams } from "react-router";
+import { useHistory } from 'react-router-dom';
 
 import Header from "../components/Header.js";
 import Player from "../components/Player.js";
@@ -16,6 +17,7 @@ import "../styles/Player.css";
 export default function Home() {
   const location = useLocation();
   let { name } = useParams();
+  let history = useHistory();
 
   const [artistId, setArtistId] = useState("");
   const [artist, setArtist] = useState({});
@@ -73,7 +75,10 @@ export default function Home() {
         let artist = result.data.artists.items[0];
         setArtistId(id);
         fetchSong(setSongs, id);
-        setArtist(artist)
+        setArtist(artist);
+        history.push({
+          pathname: "/artist/" + encodeURIComponent(artist.name).toLowerCase(),
+        });
       })
       .catch(error => {
         console.error(error);

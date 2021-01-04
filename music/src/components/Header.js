@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import { BiSearch } from 'react-icons/bi';
 import { FiMusic } from 'react-icons/fi';
 
