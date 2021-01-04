@@ -18,7 +18,7 @@ export default function Home() {
   const [songToPlay, setSongToPlay] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   // first object is the song playing
-  const [playlist, setPlaylist] = useState([{}]);
+  const [playlist, setPlaylist] = useState([]);
 
   // make get song request to Spotify API, used callback
   function fetchSong(setFunction, artistId) {
@@ -111,6 +111,7 @@ export default function Home() {
       </div>
       <Player
         song={songToPlay}
+        setSongToPlay={setSongToPlay}
         playlist={playlist}
         setPlaylist={setPlaylist}
         cropParagraph={cropParagraph}

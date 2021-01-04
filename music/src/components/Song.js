@@ -44,7 +44,7 @@ export default function Song({ songs, cropParagraph, handleClick, handleAdd, pla
               </td>
               <td className="song-info">
                 <h1>{cropParagraph(song.name, 40)}</h1>
-                <p>{cropParagraph(joinArray(song.artists), 30)}</p>
+                <p>{joinArray(song.artists)}</p>
               </td>
               <td className="song-album">{cropParagraph(song.album.name, 35)}</td>
               <td className="song-time">{convertToMin(song.duration_ms)}</td>

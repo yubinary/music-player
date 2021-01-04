@@ -4,7 +4,7 @@ import disk from "./disk.png";
 
 import { BsFillPauseFill, BsFillPlayFill, BsFillSkipStartFill, BsFillSkipEndFill } from 'react-icons/bs';
 
-export default function Player({ song, playlist, setPlaylist, cropParagraph, joinArray }) {
+export default function Player({ song, setSongToPlay, playlist, setPlaylist, cropParagraph, joinArray }) {
   const [isPlay, setIsPlay] = useState(false);
   const [audio, setAudio] = useState(new Audio());
 
@@ -14,6 +14,19 @@ export default function Player({ song, playlist, setPlaylist, cropParagraph, joi
     setIsPlay(true);
     audio.play();
   }, [song, audio])
+
+  useEffect(() => {
+    audio.onended = function () {
+      if (playlist[0] === song) {
+        audio.play();
+        setPlaylist(playlist.slice(1));
+      }
+      if (playlist.length !== 0) {
+        setSongToPlay(playlist[0]);
+        setPlaylist(playlist.slice(1));
+      }
+    }
+  }, [playlist])
 
   // change state: pause music when playing, play music when paused
   function handleClick() {
@@ -41,7 +54,7 @@ export default function Player({ song, playlist, setPlaylist, cropParagraph, joi
 
   // helper function for conditional animation
   function isAnimation(title) {
-    if (title.length > 20) {
+    if (title.length > 19) {
       return (
         <h1 className="animate-h1">{song.name}</h1>
       )
@@ -68,7 +81,7 @@ export default function Player({ song, playlist, setPlaylist, cropParagraph, joi
           </div>
           <div className="player-song-info">
             {isAnimation(song.name)}
-            <p>{joinArray(song.artists)}</p>
+            <p>{cropParagraph(joinArray(song.artists), 27)}</p>
           </div>
           <div>
             <button className="skip">

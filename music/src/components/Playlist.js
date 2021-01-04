@@ -14,11 +14,11 @@ export default function Playlist({ playlist, setPlaylist, cropParagraph }) {
   function displayPlaylist(playlists) {
     let result = [];
     // first element is the song playing
-    for (let i = 1; i < playlists.length; i++) {
+    for (let i = 0; i < playlists.length; i++) {
       let playlist = playlists[i];
       result.push(
-        <div className="playlist-song">
-          <p>{i}</p>
+        <div key={i + 1} className="playlist-song">
+          <p>{i + 1}</p>
           <div className="playlist-song-info">
             <h1>{cropParagraph(playlist.name, 20)}</h1>
             <p>{cropParagraph(playlist.artists[0].name, 40)}</p>

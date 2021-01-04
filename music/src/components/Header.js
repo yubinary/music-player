@@ -13,7 +13,6 @@ export default function Header({ artist, searchTerm, setSearchTerm, fetchArtist 
 
   // helper function for number of followers
   function shortenNum(num) {
-    console.log(num)
     let str = num + "";
     if (str.length >= 7) {
       let integer = Math.floor(num / 1000000) + ".";
