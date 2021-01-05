@@ -36,7 +36,7 @@ export default function Search() {
 
   return (
     <div className="search-page">
-      <div class="background">
+      <div class="bokeh-effect">
         <span></span>
         <span></span>
         <span></span>

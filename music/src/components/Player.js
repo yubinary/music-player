@@ -39,6 +39,23 @@ export default function Player({ song, setSongToPlay, playlist, setPlaylist, cro
     }
   }
 
+  // handle when skip start button clicked
+  function handleSkipStart() {
+    audio.currentTime = 0;
+  }
+
+  // handle when skip end button clicked
+  function handleSkipEnd() {
+    if (playlist[0] === song) {
+      audio.currentTime = 0;
+      setPlaylist(playlist.slice(1));
+    }
+    if (playlist.length !== 0) {
+      setSongToPlay(playlist[0]);
+      setPlaylist(playlist.slice(1));
+    }
+  }
+
   // show pause button when playing, play button when paused
   function displayButton() {
     if (isPlay) {
@@ -85,11 +102,11 @@ export default function Player({ song, setSongToPlay, playlist, setPlaylist, cro
           </div>
           <div>
             <button className="skip">
-              <BsFillSkipStartFill />
+              <BsFillSkipStartFill onClick={handleSkipStart} />
             </button>
             {displayButton()}
             <button className="skip">
-              <BsFillSkipEndFill />
+              <BsFillSkipEndFill onClick={handleSkipEnd} />
             </button>
           </div>
         </div>
