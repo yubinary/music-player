@@ -29,6 +29,10 @@
   width: 100%;
 }
 
+.navigation h1 a{
+  text-decoration: none;
+}
+
 .navigation form{
   float: right;
 }
@@ -85,11 +89,11 @@ textarea:focus, input:focus{
 }
 
 .artist-info{
-  margin: auto 0px 0px 10px;
+  margin: auto 0px 0px 30px;
 }
 
 .artist-info h2{
-  font-size: 40px;
+  font-size: 60px;
   margin: 0px;
 }
 
@@ -108,12 +112,13 @@ textarea:focus, input:focus{
 
 .artist-tags{
   display: flex;
+  margin: 10px 0px 0px 0px;
 }
 
 .artist-tag{
-  font-size: 12px;
+  font-size: 13px;
   border: 1px solid white;
   border-radius: 20px;
-  padding: 2px 14px;
+  padding: 2px 10px;
   margin-right: 5px;
 }

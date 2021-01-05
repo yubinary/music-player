@@ -3,6 +3,8 @@ import axios from 'axios';
 import { BiSearch } from 'react-icons/bi';
 import { useHistory } from 'react-router-dom';
 
+import "../styles/Style.css";
+
 export default function Search() {
   let history = useHistory();
   const [searchTerm, setSearchTerm] = useState("");
@@ -33,12 +35,24 @@ export default function Search() {
   }
 
   return (
-    <div className="search">
+    <div className="search-page">
+      <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <form className="search-bar"
         onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Search for an artist"
+          placeholder="Get an Artist's Top Tracks!"
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
         />

@@ -54,7 +54,7 @@ export default function Player({ song, setSongToPlay, playlist, setPlaylist, cro
 
   // helper function for conditional animation
   function isAnimation(title) {
-    if (title.length > 19) {
+    if (title.length > 17) {
       return (
         <h1 className="animate-h1">{song.name}</h1>
       )
