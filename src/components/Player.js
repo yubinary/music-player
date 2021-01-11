@@ -69,6 +69,29 @@ export default function Player({ song, setSongToPlay, playlist, setPlaylist, cro
     }
   }
 
+  // handle case when preview url is not provided
+  function hasPreview() {
+    if (song.preview_url === null) {
+      return (
+        <div>
+          <p className="error">preview not provided</p>
+        </div>
+      )
+    } else {
+      return (
+        <div>
+          <button className="skip">
+            <BsFillSkipStartFill onClick={handleSkipStart} />
+          </button>
+          {displayButton()}
+          <button className="skip">
+            <BsFillSkipEndFill onClick={handleSkipEnd} />
+          </button>
+        </div>
+      )
+    }
+  }
+
   // helper function for conditional animation
   function isAnimation(title) {
     if (title.length > 17) {
@@ -100,15 +123,7 @@ export default function Player({ song, setSongToPlay, playlist, setPlaylist, cro
             {isAnimation(song.name)}
             <p>{cropParagraph(joinArray(song.artists), 27)}</p>
           </div>
-          <div>
-            <button className="skip">
-              <BsFillSkipStartFill onClick={handleSkipStart} />
-            </button>
-            {displayButton()}
-            <button className="skip">
-              <BsFillSkipEndFill onClick={handleSkipEnd} />
-            </button>
-          </div>
+          {hasPreview()}
         </div>
         <Playlist
           playlist={playlist}

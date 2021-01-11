@@ -6,7 +6,9 @@ export default function Album({ albums, cropParagraph, handleClick, handleAdd, j
 
   // display albums
   function displayAlbum(albums) {
+    console.log(albums)
     let result = [];
+    let end = 0;
     if (typeof (albums) === "undefined" || albums.length === 0) {
       return (
         <div className="album">
@@ -14,7 +16,8 @@ export default function Album({ albums, cropParagraph, handleClick, handleAdd, j
         </div>
       )
     } else {
-      for (let i = 0; i < 5; i++) {
+      end = albums.length > 5 ? 5 : albums.length;
+      for (let i = 0; i < end; i++) {
         let album = albums[i];
         result.push(
           <div key={album.id} className="album" >
