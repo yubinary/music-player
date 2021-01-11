@@ -33,7 +33,7 @@ export default function Album({ albums, cropParagraph, handleClick, handleAdd, j
             </div>
             <div className="album-info">
               <h1>{cropParagraph(album.name, 23)}</h1>
-              <p>{cropParagraph(joinArray(album.artists), 26)}</p>
+              <p>{cropParagraph(joinArray(album.artists), 20)}</p>
             </div>
           </div >
         )

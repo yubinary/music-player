@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BiSearch } from 'react-icons/bi';
 import { useHistory } from 'react-router-dom';
 
-import "../styles/Style.css";
+import "../styles/Search.css";
 
 export default function Search() {
   let history = useHistory();
