@@ -1,7 +1,7 @@
 # [music-player](https://yubin-musicplayer.herokuapp.com/)
 
-[![Build Status](https://travis-ci.org/travis-ci/docs-travis-ci-com.svg?branch=master)](https://travis-ci.org/yubinary/music-player-2.0)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/yubinary/music-player-2.0)
+<!---[![Build Status](https://travis-ci.org/travis-ci/docs-travis-ci-com.svg?branch=master)](https://travis-ci.org/yubinary/music-player-2.0)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/yubinary/music-player-2.0)--->
 
 
 A [music platform](https://yubin-musicplayer.herokuapp.com/) where you can view an artist's top tracks, listen to their songs, and make your own playlist.
